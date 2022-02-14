@@ -1,0 +1,49 @@
+快速开始
+
+推荐全局安装 docsify-cli 工具，可以方便地创建及在本地预览生成的文档。
+
+npm i docsify-cli -g
+
+
+初始化项目
+如果想在项目的 ./docs 目录里写文档，直接通过 init 初始化项目。
+
+开始写文档
+初始化成功后，可以看到 ./docs 目录下创建的几个文件
+
+index.html 入口文件
+README.md 会做为主页内容渲染
+.nojekyll 用于阻止 GitHub Pages 忽略掉下划线开头的文件
+直接编辑 docs/README.md 就能更新文档内容，当然也可以添加更多页面。
+
+本地预览
+通过运行 docsify serve 启动一个本地服务器，可以方便地实时预览效果。默认访问地址 http://localhost:3000 。
+
+docsify serve docs
+docsify serve ./docs
+更多命令行工具用法，参考 docsify-cli 文档。
+
+
+
+Commands:
+  docsify init [path]      创建 docs                                [aliases: i]
+  docsify serve [path]     本地预览                                 [aliases: s]
+  docsify start <path>     Server for SSR
+  docsify generate <path>  Docsify的生成器                          [aliases: g]
+
+
+如果您的系统安装了Python，您可以轻松地使用它来运行静态服务器来预览您的网站。
+cd docs && python -m SimpleHTTPServer 3000
+cd docs && python -m http.server 3000
+
+
+全局选项
+  --help, -h     帮助                                                     [布尔]
+  --version, -v  当前版本号                                               [布尔]
+
+文档地址:
+  https://docsifyjs.github.io/docsify
+  https://docsifyjs.github.io/docsify-cli
+
+开发:
+  https://github.com/docsifyjs/docsify-cli/blob/master/CONTRIBUTING.md
