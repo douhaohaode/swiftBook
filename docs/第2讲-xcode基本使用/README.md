@@ -15,7 +15,6 @@ Xcode版本 : 当前最新版本 Xcode13.x
 
 ##  Xcode中的工具
 
-
 > Simulator(模拟器): 
 使用模拟器可以快速测试你的应用程序，同时模拟器提供不同设置和和不同操作系统版本的iPhone、iPad、Apple Watch和Apple TV环境。
 > 
@@ -34,7 +33,99 @@ Xcode版本 : 当前最新版本 Xcode13.x
 > ***Reality Composer更多帮助(https://developer.apple.com/documentation/realitykit/creating_3d_content_with_reality_composer)***
 > 
 
-### simulator 模拟器
+
+## 创建第一个应用程序
+
+打开xcode会弹出欢迎页面
+
+<img width= 750 src="第2讲-xcode基本使用/style/3.jpg">
+
+> Create a new XcodeProject
+>  创建新项目
+> 
+> Clone an existing Project
+> 通过git仓库下载项目
+> 
+> Open a project or file
+> 打开存在的项目或者文件
+> 
+
+## 模板选择器
+
+<img width= 750 src="第2讲-xcode基本使用/style/4.jpg">
+
+> 可以选择创建不同OS平台
+> Xcode为所有苹果平台上不同类型的应用程序提供模板。这些模板包括基本源文件、配置文件和构建设置。
+
+<img width= 300  src="第2讲-xcode基本使用/style/15.jpg">
+
+> 可以选择创建苹果提供好的模版应用以及Framework&Library
+> 
+
+## 库介绍
+
+>Framework&Library两者都是静态库 后缀为.framework和 .a两种形式；
+>还有动态库有.dylib 和 .framework 形式，后来.dylib动态库又被苹果替换成.tbd的形式
+>
+
+## 静态库与动态库的区别
+
+>静态库和动态库是相对编译期和运行期的：静态库在程序编译时会被链接到目标代码中，程序运行时将不再需要改静态库；而动态库在程序编译时并不会被链接到目标代码中，只是在程序运行时才被载入，因为在程序运行期间还需要动态库的存在。
+>
+
+## 创建新项目面板
+
+#### Product Name 
+> <img width= 750 src="第2讲-xcode基本使用/style/5.jpg">
+>
+
+#### Team 
+> <img width= 750 src="第2讲-xcode基本使用/style/6.jpg">
+>
+
+#### Organization identifier 
+> <img width= 750 src="第2讲-xcode基本使用/style/7.jpg">
+>
+
+#### Bundle identifier 
+> <img width= 750 src="第2讲-xcode基本使用/style/8.jpg">
+>
+
+#### Interface
+> <img width= 750 src="第2讲-xcode基本使用/style/9.jpg">
+>
+
+#### Language
+> <img width= 750 src="第2讲-xcode基本使用/style/12.jpg">
+>
+
+#### CoreData
+> <img width= 750 src="第2讲-xcode基本使用/style/10.jpg">
+>
+
+#### Include Tests 
+> <img width= 750 src="第2讲-xcode基本使用/style/11.jpg">
+>
+
+
+##  创建应用程序步骤
+
+> 1. 双击打开Xcode ”--->  然后在启动窗口中单击“Create a new  Xcode project” 
+
+> 2. 在模板选择器中，选择iOS平台和应用程序模板，点击App 。
+
+> 3. 输入对应的内容--->  点击“Next”
+
+> 4. 选择创建项目的存储位置 ---->  点击“Create”
+
+> 5. 在打开的工程中点击“运行按钮”
+
+##### 至此第一个应用程序完成，Xcode会启动一个iOS模拟器来运行程序,程序的运行结果如右图所示，白白一片,后面我们得往这空白界面上增添各种各样的控件元素。
+
+ <img width = 300 src="第2讲-xcode基本使用/style/13.jpg">
+
+
+## simulator 模拟器
 
 我们在编写完代码需要验证的时候，就可以使用模拟器来查看运行效果，并且可以通过对模拟器的各种操作，来查看我们写的代码是否是我们想看到的结果。有时候同一段代码在不同机型或者不同系统版本的环境下，可能表现不一样。 这个时候我们需要不同iOS系统版本和不同的机型来进行测试 ， 苹果设备有很多，有时候公司提供的测试机器无法满足测试，模拟器它提供了不同平台的环境，总之它是苹果内置的工具之一，用起来非常好用和方便。
 
@@ -45,7 +136,7 @@ Xcode版本 : 当前最新版本 Xcode13.x
 
 
 #### 与模拟器互动
-操作模拟器与操作手机差不多，模拟器运行在MAC上，是使用鼠标来和模拟器进行交互，下面介绍一下它的基本操作。
+操作模拟器与操作手机差不多，模拟器运行在MAC上，是使用鼠标和键盘来和模拟器进行交互，下先面介绍一下它的基本操作。
 > 轻点   点击
 
 > 轻点两下 双击 
@@ -183,21 +274,24 @@ Xcode版本 : 当前最新版本 Xcode13.x
 
 > Slow Animations  放慢动画速度，并检查它们是否有性能、渲染、跳过帧和其他问题。
  
-> Graphics Quality Override   图形质量覆盖 
+> Graphics Quality Override   图形质量覆盖  可将模拟器图形质量调至默认或低质量。在大容量UITableView等场景下模拟器开启此选项流畅效果是较为明显的。
+
+
 
 ###### Color 相关设置信息来帮助调整性能,为可能导致渲染、滚动性能和内存问题的图像和屏幕区域着色.
 
-> Color Blended Layers   颜色混合层：绘制在其他视图顶部并启用混合的视图用红色覆盖。其他地区是绿色覆盖的。
+> Color Blended Layers   颜色混合层：这个选项基于渲染程度对屏幕中的混合区域进行绿到红的高亮显示，越红表示性能越差，会对帧率等指标造成较大的影响。红色通常是由于多个半透明图层叠加引起。
  
-> Color Copied Images    彩色复印图像：Core Animation必须复制而不是使用原始图像以蓝色覆盖。
+> Color Copied Images    
+苹果的GPU只解析32bit的颜色格式。 如果一张图片，颜色格式不是32bit，CPU会先进行颜色格式转换，再让GPU渲染, 把这样的图片标为蓝色。蓝色越多，性能越差。 
 
-> Color Misaligned Images   颜色未对齐的图像：其边界与目标像素不对齐的图像用洋红色覆盖。 用比例因子绘制的图像用
+> Color Misaligned Images   颜色未对齐的图像：这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。黄色、紫色越多，性能越差。
 
 > Color Off-screen Rendered  颜色离屏渲染：在屏幕外渲染的内容用黄色覆盖。
 
 > Open System Log  打开系统日志，在控制台应用程序中打开模拟设备的系统日志。使用系统日志查找应用程序的错误、警告和其他问题。
 
-> Simulate Memory Warning  模拟内存警告  系统会向您的应用程序发送任何低内存警告消息和通知。
+> Simulate Memory Warning  模拟内存警告  系统会向您的应用程序发送任何低内存警告消息和通知。调用方法 didReceiveMemoryWarining()
 
 > Show Parallel Testing Devices  显示并行测试设备
 
@@ -210,11 +304,11 @@ Xcode版本 : 当前最新版本 Xcode13.x
 这里就是对模拟器的介绍， 前期不需要大家全部都会使用，但是大家尽量记住，模拟器能够模拟的功能，等以后慢慢熟悉，在用模拟器测试的时候，能够知道在什么地方设置就可以了。 下面连接是苹果模拟器文档与视频，有更多的详细的介绍:
 
 
-#### 命令行访问模拟器
+## 命令行访问模拟器
 
-可以使用 simctl 工具从命令行控制模拟器，模拟器和控制这两个词的组合。这是一个帮助提高生产力的绝佳工具。
+可以使用 simctl 工具从命令行控制模拟器，simctl是模拟器和控制这两个词的组合。这是一个帮助提高生产力的绝佳工具。
 
-比如使用simctl等命令行工具来帮助您在开发环境中模拟推送通知。
+比如使用simctl等命令行工具来帮助我们在开发环境中模拟推送通知。
 
 首先创建一个 .json 文件, 文件内容包含：
 
@@ -243,6 +337,28 @@ Xcode版本 : 当前最新版本 Xcode13.x
  /*注释*/ xcrun:command-line tool runner 命令行工具运行器
 
 
+####  差异
+其实模拟器是一个在Mac上运行的应用程序，可以访问计算机的资源，包括CPU、内存和网络连接，
+但是与真是设备还是有差异的，下面是它在硬件上的差异。
+
+##### 硬件差异
+不支持以下功能
+
+1、环境光传感器  感应周边环境光线的强弱
+
+2、音频输入，但通过选取“硬件”>“Siri”来使用 Siri 除外。
+
+3、气压计  大气压，海拔测量
+
+4、蓝牙
+
+5、相机
+
+6、运动支持（加速度计和陀螺仪） 感应设备的运动（摇一摇、计步器）感应设备的持握方式（赛车类游戏）
+
+7、距离感应器 感应是否有其他物体靠近设备屏幕
+
+ ***模拟器与真机差异(https://help.apple.com/simulator/mac/current/#/devb0244142d)***
 
  ***模拟器使用文档(https://help.apple.com/simulator/mac/current/)***
 
@@ -250,7 +366,7 @@ Xcode版本 : 当前最新版本 Xcode13.x
 
 ***模拟器视频讲解 充分利用模拟器 (https://developer.apple.com/videos/play/wwdc2019/418/)***
 
-### Instruments 
+## Instruments 
   Instruments是一款强大的性能分析和测试工具，Xcode内置常用工具之一。Instruments可以帮助开发者在所有平台上（iOS、macOS、watchOS、tvOS）上分析应用程序，以便更好地了解和优化其行为和性能。
 
 > 打开方式 Xcode -> Open Developer Tool -> Instruments
@@ -524,95 +640,9 @@ masksToBounds 需要创建一个离屏通道 以确保视图被正确剪裁,如�
 ***Instruments 中文指南(https://pan.baidu.com/s/1y0mSYbPS2u8EKRIzzfEUvQ)***
 
 
-## 欢迎页面
-
-打开xocde会弹出欢迎页面
-
-<img width= 750 src="第2讲-xcode基本使用/style/3.jpg">
-
-> Create a new XcodeProject
->  创建新项目
-> 
-> Clone an existing Project
-> 通过git仓库下载项目
-> 
-> Open a project or file
-> 打开存在的项目或者文件
-> 
-
-## 模板选择器
-
-<img width= 750 src="第2讲-xcode基本使用/style/4.jpg">
-
-> 可以选择创建不同OS平台
-> Xcode为所有苹果平台上不同类型的应用程序提供模板。这些模板包括基本源文件、配置文件和构建设置。
-
-<img width= 300  src="第2讲-xcode基本使用/style/15.jpg">
-
-> 可以选择创建苹果提供好的模版应用以及Framework&Library
-> 
-
-## 库介绍
-
->Framework&Library两者都是静态库 后缀为.framework和 .a两种形式；
->还有动态库有.dylib 和 .framework 形式，后来.dylib动态库又被苹果替换成.tbd的形式
->
-
-## 静态库与动态库的区别
-
->静态库和动态库是相对编译期和运行期的：静态库在程序编译时会被链接到目标代码中，程序运行时将不再需要改静态库；而动态库在程序编译时并不会被链接到目标代码中，只是在程序运行时才被载入，因为在程序运行期间还需要动态库的存在。
->
-
-## 创建新项目面板
-
-#### Product Name 
-> <img width= 750 src="第2讲-xcode基本使用/style/5.jpg">
->
-
-#### Team 
-> <img width= 750 src="第2讲-xcode基本使用/style/6.jpg">
->
-
-#### Organization identifier 
-> <img width= 750 src="第2讲-xcode基本使用/style/7.jpg">
->
-
-#### Bundle identifier 
-> <img width= 750 src="第2讲-xcode基本使用/style/8.jpg">
->
-
-#### Interface
-> <img width= 750 src="第2讲-xcode基本使用/style/9.jpg">
->
-
-#### Language
-> <img width= 750 src="第2讲-xcode基本使用/style/12.jpg">
->
-
-#### CoreData
-> <img width= 750 src="第2讲-xcode基本使用/style/10.jpg">
->
-
-#### Include Tests 
-> <img width= 750 src="第2讲-xcode基本使用/style/11.jpg">
->
 
 
-## iOS开发 创建第一个应用程序
 
-> 1. 双击打开Xcode ”--->  然后在启动窗口中单击“Create a new  Xcode project” 
-
-> 2. 在模板选择器中，选择iOS平台和应用程序模板，点击App 。
-
-> 3. 输入对应的内容--->  点击“Next”
-
-> 4. 选择创建项目的存储位置 ---->  点击“Create”
-
-> 5. 在打开的工程中点击“运行按钮”
-
-##### 至此第一个应用程序完成，Xcode会启动一个iOS模拟器来运行程序,程序的运行结果如右图所示，白白一片,后面我们得往这空白界面上增添各种各样的控件元素。
-
- <img width = 300 src="第2讲-xcode基本使用/style/13.jpg">
 
 ## 项目文件介绍
 
