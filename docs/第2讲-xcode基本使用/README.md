@@ -251,7 +251,7 @@ Xcode版本 : 当前最新版本 Xcode13.x
 
 > Decrease Preferred Text Size  调节模拟器文字变小
 
-> Toggle Increased Contrast     增加对比度
+> Toggle Increased Contrast     增加颜色对比度
 
 > Triger iCloud Sync    触发iCloud同步 使用模拟器测试数据是否在iCloud和模拟设备之间同步
 
@@ -272,22 +272,24 @@ Xcode版本 : 当前最新版本 Xcode13.x
 ##### Debug
 <img width = 350 src="第2讲-xcode基本使用/style/36.jpg">
 
-> Slow Animations  放慢动画速度，并检查它们是否有性能、渲染、跳过帧和其他问题。
+> Slow Animations  放慢动画速度，并检查它们是否有性能、渲染、跳帧和其他问题。
  
-> Graphics Quality Override   图形质量覆盖  可将模拟器图形质量调至默认或低质量。在大容量UITableView等场景下模拟器开启此选项流畅效果是较为明显的。
+> Graphics Quality Override   可将模拟器图形质量调至默认或低质量。在大容量UITableView等场景下模拟器开启此选项流畅效果是较为明显的。
 
 
 
 ###### Color 相关设置信息来帮助调整性能,为可能导致渲染、滚动性能和内存问题的图像和屏幕区域着色.
 
-> Color Blended Layers   颜色混合层：这个选项基于渲染程度对屏幕中的混合区域进行绿到红的高亮显示，越红表示性能越差，会对帧率等指标造成较大的影响。红色通常是由于多个半透明图层叠加引起。
+> Color Blended Layers   颜色混合层：
+也就是像素混合情况，这种情况GPU需要做像素混合的计算，是增加了GPU的工作，会对帧率等指标造成较大的影响。如果出现这种情况它会进行绿到红的显示，越红表示性能越差。
+一般情况下红色通常是由于多个半透明图层叠加引起。
  
-> Color Copied Images    
-苹果的GPU只解析32bit的颜色格式。 如果一张图片，颜色格式不是32bit，CPU会先进行颜色格式转换，再让GPU渲染, 把这样的图片标为蓝色。蓝色越多，性能越差。 
+> Color Copied Images   颜色复制图像 
+苹果的GPU只解析32bit的颜色格式。 如果一张图片，颜色格式不是32bit，那么CPU会先进行颜色格式转换，再让GPU渲染, 把这样的图片标为蓝色。蓝色越多，性能越差。 
 
-> Color Misaligned Images   颜色未对齐的图像：这个选项检查了图片是否被缩放，以及像素是否对齐。被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。黄色、紫色越多，性能越差。
+> Color Misaligned Images   颜色未对齐的图像：这个选项检查了图片是否被缩放，以及像素是否对齐边界（也就是非整型坐标）。 被放缩的图片会被标记为黄色，像素不对齐则会标注为紫色。黄色、紫色越多，性能越差。
 
-> Color Off-screen Rendered  颜色离屏渲染：在屏幕外渲染的内容用黄色覆盖。
+> Color Off-screen Rendered  颜色离屏渲染：GPU在当前屏幕缓冲区以外新开辟一个缓冲区进行渲染操作，会耗性能，这个时候会用黄色覆盖。
 
 > Open System Log  打开系统日志，在控制台应用程序中打开模拟设备的系统日志。使用系统日志查找应用程序的错误、警告和其他问题。
 
@@ -300,8 +302,6 @@ Xcode版本 : 当前最新版本 Xcode13.x
 <img width = 350 src="第2讲-xcode基本使用/style/37.jpg">
 
 >  模拟器更改窗口的大小相关设置
-
-这里就是对模拟器的介绍， 前期不需要大家全部都会使用，但是大家尽量记住，模拟器能够模拟的功能，等以后慢慢熟悉，在用模拟器测试的时候，能够知道在什么地方设置就可以了。 下面连接是苹果模拟器文档与视频，有更多的详细的介绍:
 
 
 ## 命令行访问模拟器
@@ -336,6 +336,8 @@ Xcode版本 : 当前最新版本 Xcode13.x
 ```
  /*注释*/ xcrun:command-line tool runner 命令行工具运行器
 
+
+这里就是对模拟器的介绍， 前期不需要大家全部都会使用，但是大家尽量记住，模拟器能够模拟的功能，等以后慢慢熟悉，在用模拟器测试的时候，能够知道在什么地方设置就可以了。 下面连接是苹果模拟器文档与视频，有更多的详细的介绍:
 
 ####  差异
 其实模拟器是一个在Mac上运行的应用程序，可以访问计算机的资源，包括CPU、内存和网络连接，
@@ -648,17 +650,16 @@ masksToBounds 需要创建一个离屏通道 以确保视图被正确剪裁,如�
 
 <img width width= 750 src="第2讲-xcode基本使用/style/16.jpg">
 
-## AppDelegate 与  SceneDelegate
-
- 1.AppDelegate.swift iOS13之前，Appdelegate的职责全权处理App生命周期和UI生命周期，并没有Scene Delegate；
- 
- 2.iOS13之前，Appdelegate App生命周期和UI生命周期，并没有Scene Delegate；
-
-### iOS13之后与iOS之前的对比
  > 1.iOS13之后，Appdelegate的职责更改为 :
 
         1、处理 App 生命周期
+ 
         2、处理 新的 Scene Session 生命周期
+ 
+        3、UISceneSession 对象管理场景的唯一运行时实例。 当用户向您的应用程序添加一个
+        新场景时，或者当您以编程方式请求一个新场景时，系统会创建一个会话对象来跟踪该场
+        景。 会话包含唯一标识符和场景的配置详细信息。UIKit 在场景本身的生命周期内维护会
+        话信息，销毁会话以响应用户在应用切换器中关闭场景。
 
 > 2.SceneDelegate.swift Scene Delegate处理UI的生命周期，也就是负责屏幕上显示的内容。
 
@@ -678,6 +679,14 @@ masksToBounds 需要创建一个离屏通道 以确保视图被正确剪裁,如�
 > 
 > 10.带有数据库图表 Demo: CoreData
 >
+
+
+## AppDelegate 与  SceneDelegate
+
+ 1.AppDelegate.swift iOS13之前，Appdelegate的职责全权处理App生命周期和UI生命周期，并没有Scene Delegate；
+ 
+ 2.iOS13之前，Appdelegate App生命周期和UI生命周期，并没有Scene Delegate；
+
 
 ## iOS13以前APP具体的生命周期 
 

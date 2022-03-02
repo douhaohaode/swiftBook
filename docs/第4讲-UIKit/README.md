@@ -46,20 +46,18 @@ UIKit是苹果平台的必修框架，为iOS应用程序提供了所需的基础
 
 > 该Window的作用是接收来自UIKit的事件，并将任何相关事件转发到根视图控制器和相关视图。
 
- <img width = 450 src="第5讲-UIKit/style/1.jpg">
+ <img width = 450 src="第4讲-UIKit/style/1.jpg">
 
 
-###  2.UIScreen : iOS设备需要有一个主屏幕和附加屏幕
+###  2.UIScene : iOS设备需要有一个主屏幕和附加屏幕
 
-> 同时管理应用程序用户界面的多个实例，并将资源定向到用户界面的适当实例。
+> UIKit使用UIWindow对象管理应用程序UI的每个实例,Scene包含用于显示用户界面实例的窗口和视图控制器。
 
-> UIKit使用UIWindow对象管理应用程序UI的每个实例,Screen包含用于显示用户界面实例的窗口和视图控制器。
-
-> 每个Screen还有一个相应的UIWindow对象，用于协调UIKit和应用程序之间的交互。
+> 每个Scene还有一个相应的UIWindow对象，用于协调UIKit和应用程序之间的交互。
 
 >场景并发运行，共享相同的内存和应用程序进程空间。因此，单个应用程序可能同时激活多个场景和场景委托对象。
 
- <img width = 450 src="第5讲-UIKit/style/4.jpg">
+ <img width = 450 src="第4讲-UIKit/style/4.jpg">
 
 ### 3.UIView：负责绝大部分的内容描述，并负责响应用户的交互。
 
@@ -73,23 +71,31 @@ UIKit是苹果平台的必修框架，为iOS应用程序提供了所需的基础
 
 > UIButton、UILabel、UITextField、UIControl都继承自UIView
 
-<img width = 750 src="第5讲-UIKit/style/3.jpg">
+
+## UIResponder
+> 用于响应和处理事件的抽象界面。
+
+> 一个UIResponder类为那些需要响应并处理事件的对象定义了一组接口。这些事件主要分为两类：触摸事件(touch events)和运动事件(motion events)。
+
+> 在UIKit中，UIApplication、UIView、UIViewController这几个类都是直接继承自UIResponder类。因此UIKit中的视图、控件、视图控制器，以及我们自定义的视图及视图控制器都有响应事件的能力。
+
+<img width = 750 src="第4讲-UIKit/style/3.jpg">
 
 
 ## UIKit 常用组件预览
 
 下面这张图展示的全部控件都属于UIKik框架，
 
-<img width = 750 src="第5讲-UIKit/style/2.jpg">
+<img width = 750 src="第4讲-UIKit/style/2.jpg">
 
 ## UIKit 常用组件与非常用组件
 
-<img  src="第5讲-UIKit/style/5.jpg">
+<img  src="第4讲-UIKit/style/5.jpg">
 
 
 ## 基础控件之 UILabel
 
-<img src="第5讲-UIKit/style/6.jpg">
+<img src="第4讲-UIKit/style/6.jpg">
 
 ###  UILabel 常用属性
  
@@ -258,7 +264,7 @@ lineBreakMode= .byClipping
 
 ## 基础控件之 UIImageView
 
-<img src="第5讲-UIKit/style/7.jpg">
+<img src="第4讲-UIKit/style/7.jpg">
 
 ###  UIImageView 常用属性 
 
@@ -273,7 +279,7 @@ lineBreakMode= .byClipping
 
 下面是 contentMode 属性各种类型设置后的差异
 
-<img src="第5讲-UIKit/style/10.jpg">
+<img src="第4讲-UIKit/style/10.jpg">
 
 
 ### 基本使用
@@ -342,7 +348,7 @@ lineBreakMode= .byClipping
 
 ## 基础控件之 UIButton
 
-<img src="第5讲-UIKit/style/11.jpg">
+<img src="第4讲-UIKit/style/11.jpg">
 
 接下来将演示按钮控件的使用，按钮是用户界面中最常见的交互控件。
 
@@ -428,7 +434,7 @@ lineBreakMode= .byClipping
 
 ## 基础控件之 UITextField
 
-<img src="第5讲-UIKit/style/12.jpg">
+<img src="第4讲-UIKit/style/12.jpg">
 
 ### 常用属性 
 #### 键盘属性
@@ -511,7 +517,7 @@ func textFieldDidChangeSelection(UITextField)
 
 如图:
 
-<img width = 350 src="第5讲-UIKit/style/13.jpg">
+<img width = 350 src="第4讲-UIKit/style/13.jpg">
 
 ### 编码之前考虑的事情
 
